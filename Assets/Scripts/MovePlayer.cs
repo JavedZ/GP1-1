@@ -50,8 +50,8 @@ public class MovePlayer : MonoBehaviour
             }
         }
 
-        Debug.Log("current: " +currentPosition + ", clicked: " + clickedPosition);
-        Debug.Log(clickedPosition - currentPosition);
+        //Debug.Log("current: " +currentPosition + ", clicked: " + clickedPosition);
+        //Debug.Log(clickedPosition - currentPosition);
         if (isMoving)
         {
             Move();
@@ -63,15 +63,18 @@ public class MovePlayer : MonoBehaviour
     {
         float distance = Vector3.Distance(currentPosition, clickedPosition);
         Vector3 position = clickedPosition - currentPosition;
-        if (distance <= maxRange)
+        if(Time.timeScale >= 1.0f)
         {
-            if (Mathf.Abs(position.x) > Mathf.Abs(position.z) && (int)currentPosition.z == (int)clickedPosition.z)
+            if (distance <= maxRange)
             {
-                isMoving = true;
-            }
-            else if(Mathf.Abs(position.x) < Mathf.Abs(position.z) && (int)currentPosition.x == (int)clickedPosition.x)
-            {
-                isMoving = true;
+                if (Mathf.Abs(position.x) > Mathf.Abs(position.z) && (int)currentPosition.z == (int)clickedPosition.z)
+                {
+                    isMoving = true;
+                }
+                else if (Mathf.Abs(position.x) < Mathf.Abs(position.z) && (int)currentPosition.x == (int)clickedPosition.x)
+                {
+                    isMoving = true;
+                }
             }
         }
         else

@@ -66,7 +66,7 @@ public class UIControler : MonoBehaviour
         {
             _playImage.sprite.name = "PauseBtn";
             _playImage.sprite = pauseImage;
-            Time.timeScale = 1.0f;
+
             if (MainMenu || pauseMenu || lostMenu || SettingMenu)
             {
                 MainMenu.SetActive(false);
